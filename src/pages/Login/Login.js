@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   FormContainer, FormItem, FormWrapper, LoginLink, Submit, Welcome,
-} from './styles';
+} from '../styles';
 
 export const Login = () => {
   const handleSubmit = (e) => {
@@ -19,13 +19,7 @@ export const Login = () => {
     <FormContainer>
       <form onSubmit={handleSubmit}>
         <FormWrapper>
-          <Welcome>Seja bem vindo!</Welcome>
-          <FormItem>
-            <span className="material-icons">
-              person
-            </span>
-            <input className="form-input" name="nome" type="text" placeholder="Nome" />
-          </FormItem>
+          <Welcome>Olá novamente!</Welcome>
           <FormItem>
             <span className="material-icons">
               email
@@ -38,8 +32,8 @@ export const Login = () => {
             </span>
             <input className="form-input" name="senha" type="password" placeholder="Senha" />
           </FormItem>
-          <Submit type="submit">REGISTRAR-SE</Submit>
-          <LoginLink to="/">Já possui uma conta?</LoginLink>
+          <Submit type="submit">LOGIN</Submit>
+          <LoginLink to="/">Não é cadastrado?</LoginLink>
         </FormWrapper>
       </form>
     </FormContainer>
