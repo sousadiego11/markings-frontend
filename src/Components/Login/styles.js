@@ -1,18 +1,25 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FormItem = styled.div`
     margin: 8px 0 8px 0;
-    background: #e9e9e9;
-    display: flex;
     height: 30px;
-    border-radius: 6px;
     padding: 6px 4px 6px 4px;
+
+    background: #e9e9e9;
+
+    display: flex;
+
+    border-radius: 6px;
 
   .form-input {
     border: none;
-    padding: 0px 6px 0px 6px;
+
     outline: none;
+
+    padding: 0px 6px 0px 6px;
     width: 100%;
+
     background: #e9e9e9;
     color: #8a909a;
   }
@@ -33,24 +40,28 @@ export const Submit = styled.button`
   border-radius: 24px;
 
   font-weight: 700;
-  background-image: linear-gradient(90deg, rgba(26,82,177,1) 0%, rgba(23,127,196,1) 30%, rgba(31,238,255,1) 100%);
+
+  background-image: linear-gradient(90deg, rgba(15,63,156,1) 0%, rgba(73,177,231,1) 50%, rgba(206,58,255,1) 84%);
   background-size: 200%;
   background-position: 0%;
+
   color: #FFF;
 
   transition: 0.4s;
   cursor: pointer;
 
- &:hover {
-  background-position: 100% 0%;
+  &:hover {
+    background-position: 100% 0%;
   }
 `;
 
-export const LoginLink = styled.span`
+export const LoginLink = styled(Link)`
   align-self: center;
-  font-size: 14px;
   margin-top: 6px;
-  color: #2c3038;
+
+  font-size: 14px;
+
+  color: #4f5259;
 `;
 
 export const Welcome = styled.h1`
@@ -65,17 +76,15 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-sizing: border-box;
 
+  box-sizing: border-box;
   width: 60%;
 `;
 
 export const FormContainer = styled.div`
   background: white;
 
-  padding: 20;
   margin: 80px auto 80px auto;
-  justify-content: center;
 
   width: 500px;
   height: 300px;

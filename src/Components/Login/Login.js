@@ -1,34 +1,47 @@
 import React from 'react';
 import {
-  FormWrapper, Welcome, FormItem, Submit, LoginLink, FormContainer,
+  FormContainer, FormItem, FormWrapper, LoginLink, Submit, Welcome,
 } from './styles';
 
-export const Login = () => (
-  <FormContainer>
-    <form>
-      <FormWrapper>
-        <Welcome>Seja bem vindo!</Welcome>
-        <FormItem>
-          <span className="material-icons">
-            person
-          </span>
-          <input className="form-input" name="nome" type="text" placeholder="Nome" />
-        </FormItem>
-        <FormItem>
-          <span className="material-icons">
-            email
-          </span>
-          <input className="form-input" name="email" type="text" placeholder="Email" />
-        </FormItem>
-        <FormItem>
-          <span className="material-icons">
-            lock
-          </span>
-          <input className="form-input" name="senha" type="email" placeholder="Senha" />
-        </FormItem>
-        <Submit type="submit">REGISTRAR-SE</Submit>
-        <LoginLink>Já possui uma conta?</LoginLink>
-      </FormWrapper>
-    </form>
-  </FormContainer>
-);
+export const Login = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const credenciais = {
+      nome: e.target[0].value,
+      email: e.target[1].value,
+      senha: e.target[2].value,
+    };
+    console.log('🚀 ~ file: Login.js ~ line 16 ~ submit ~ credenciais', credenciais);
+  };
+
+  return (
+    <FormContainer>
+      <form onSubmit={handleSubmit}>
+        <FormWrapper>
+          <Welcome>Seja bem vindo!</Welcome>
+          <FormItem>
+            <span className="material-icons">
+              person
+            </span>
+            <input className="form-input" name="nome" type="text" placeholder="Nome" />
+          </FormItem>
+          <FormItem>
+            <span className="material-icons">
+              email
+            </span>
+            <input className="form-input" name="email" type="email" placeholder="Email" />
+          </FormItem>
+          <FormItem>
+            <span className="material-icons">
+              lock
+            </span>
+            <input className="form-input" name="senha" type="password" placeholder="Senha" />
+          </FormItem>
+          <Submit type="submit">REGISTRAR-SE</Submit>
+          <LoginLink to="/">Já possui uma conta?</LoginLink>
+        </FormWrapper>
+      </form>
+    </FormContainer>
+  );
+};
