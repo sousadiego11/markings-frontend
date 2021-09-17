@@ -1,4 +1,4 @@
-# Front-end App for the "Ts API"
+# Front-end App that consumes external API ( WIP )
 
 This API was built using Eslint and Typescript for a better code reading and safety.
 
