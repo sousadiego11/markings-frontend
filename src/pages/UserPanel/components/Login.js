@@ -7,15 +7,15 @@ export const Login = ({ setModalType }) => (
       <span className="material-icons">
         email
       </span>
-      <input className="form-input" name="email" type="email" placeholder="Email" />
+      <input required className="form-input" name="email" type="email" placeholder="Email" />
     </FormItem>
     <FormItem>
       <span className="material-icons">
         lock
       </span>
-      <input className="form-input" name="senha" type="password" placeholder="Senha" />
+      <input required className="form-input" name="senha" type="password" placeholder="Senha" />
     </FormItem>
-    <Submit type="submit">LOGIN</Submit>
+    <Submit name="action" value={2} type="submit">LOGIN</Submit>
     <LoginLink onClick={() => setModalType(1)}>Não é cadastrado?</LoginLink>
   </>
 );

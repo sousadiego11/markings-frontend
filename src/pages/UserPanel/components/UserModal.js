@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FormContainer, FormWrapper, ModalClose, Welcome,
 } from '../../styles';
@@ -8,15 +8,18 @@ export const UserModal = ({ props }) => {
   const {
     modalType, modalVisible, setModalType, setModalVisible,
   } = props;
+  const [userData, setUserData] = useState();
+  console.log('🚀 ~ file: UserModal.js ~ line 12 ~ UserModal ~ userData', userData);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const credenciais = {
-      nome: e.target[0].value,
-      email: e.target[1].value,
-      senha: e.target[2].value,
-    };
-    console.log('🚀 ~ file: Login.js ~ line 16 ~ submit ~ credenciais', credenciais);
+    setUserData({
+      nome: e.target.nome?.value,
+      email: e.target.email?.value,
+      senha: e.target.senha?.value,
+      action: e.target.action?.value,
+    });
   };
 
   return (
