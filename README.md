@@ -1,6 +1,6 @@
 # Front-end App that consumes external API ( WIP )
 
-This API was built using Eslint and Typescript for a better code reading and safety.
+This project was built using ReactJS and Mapbox(react-map-gl).
 
 ## Installation ✨
 
