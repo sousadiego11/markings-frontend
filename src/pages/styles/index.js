@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Modal from 'react-modal';
 
 export const FormItem = styled.div`
     margin: 8px 0 8px 0;
@@ -55,9 +55,36 @@ export const Submit = styled.button`
   }
 `;
 
-export const LoginLink = styled(Link)`
+export const OpenModal = styled.button`
+  height: 36px;
+  width: 100px;
+
+  margin: 12px 0 0 12px;
+
+  border: none;
+  border-radius: 24px;
+
+  font-weight: 700;
+
+  background-image: linear-gradient(90deg, rgba(15,63,156,1) 0%, rgba(73,177,231,1) 50%, rgba(206,58,255,1) 84%);
+  background-size: 200%;
+  background-position: 0%;
+
+  color: #FFF;
+
+  transition: 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    background-position: 100% 0%;
+  }
+`;
+
+export const LoginLink = styled.a`
   align-self: center;
   margin-top: 6px;
+  cursor: pointer;
+  text-decoration: underline;
 
   font-size: 14px;
 
@@ -67,7 +94,7 @@ export const LoginLink = styled(Link)`
 export const Welcome = styled.h1`
   align-self: center;
   margin: 6px 0 6px 0;
-  color: #4f5259;
+  color: rgba(73,177,231,1);
 `;
 
 export const FormWrapper = styled.div`
@@ -81,13 +108,29 @@ export const FormWrapper = styled.div`
   width: 60%;
 `;
 
-export const FormContainer = styled.div`
-  background: white;
+export const ModalClose = styled.button`
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+
+  color: #4f5259;
+  background: none;
+
+  border: none;
+  cursor: pointer;
+`;
+
+export const FormContainer = styled(Modal)`
+  background: #FFf;
 
   margin: 80px auto 80px auto;
+  position: relative;
 
   width: 500px;
   height: 300px;
 
   border-radius: 8px;
+  outline: none;
+  box-shadow: 5px 6px 15px 0px rgba(60,60,60,0.24);
 `;
