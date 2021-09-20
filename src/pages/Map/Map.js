@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactMapGL, { GeolocateControl, NavigationControl } from 'react-map-gl';
 import { Actions } from '../UserPanel';
-import { geolocateControlStyle, navControlStyle } from './utils';
+import { geolocateControlStyle, navControlStyle, mapStyle } from './utils';
 
 export const Map = () => {
   const [viewport, setViewport] = useState({
@@ -32,7 +32,7 @@ export const Map = () => {
       {...viewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
-      mapStyle="mapbox://styles/mapbox/streets-v11"
+      mapStyle={mapStyle}
       onClick={(e) => console.log(e)}
     >
       <Actions />

@@ -7,3 +7,5 @@ export const navControlStyle = {
   right: 10,
   top: 50,
 };
+
+export const mapStyle = 'mapbox://styles/mapbox/streets-v11';

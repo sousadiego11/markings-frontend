@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import {
-  FormContainer, FormWrapper, ModalClose, Welcome,
+  ModalCustom, FormWrapper, ModalClose, Welcome,
 } from '../../styles';
 import { Login, Signup } from '.';
 
 export const UserModal = ({ props }) => {
-  const {
-    modalType, modalVisible, setModalType, setModalVisible,
-  } = props;
   const [userData, setUserData] = useState();
   console.log('🚀 ~ file: UserModal.js ~ line 12 ~ UserModal ~ userData', userData);
 
@@ -23,10 +20,10 @@ export const UserModal = ({ props }) => {
   };
 
   return (
-    <FormContainer isOpen={modalVisible}>
+    <ModalCustom isOpen={props.modalVisible}>
       <form onSubmit={handleSubmit}>
         <FormWrapper>
-          <ModalClose type="button" onClick={() => setModalVisible(false)}>
+          <ModalClose type="button" onClick={() => props.setModalVisible(false)}>
             <span
               className="material-icons-outlined"
             >
@@ -34,11 +31,11 @@ export const UserModal = ({ props }) => {
             </span>
           </ModalClose>
           <Welcome>Markings</Welcome>
-          {modalType === 1
-            ? <Signup setModalType={setModalType} />
-            : <Login setModalType={setModalType} />}
+          {props.modalType === 1
+            ? <Signup setModalType={props.setModalType} />
+            : <Login setModalType={props.setModalType} />}
         </FormWrapper>
       </form>
-    </FormContainer>
+    </ModalCustom>
   );
 };

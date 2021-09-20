@@ -56,8 +56,8 @@ export const Submit = styled.button`
 `;
 
 export const OpenModal = styled.button`
-  height: 36px;
-  width: 100px;
+  height: 30px;
+  width: 90px;
 
   margin: 12px 0 0 12px;
 
@@ -65,6 +65,7 @@ export const OpenModal = styled.button`
   border-radius: 24px;
 
   font-weight: 700;
+  font-size: 12px;
 
   background-image: linear-gradient(90deg, rgba(15,63,156,1) 0%, rgba(73,177,231,1) 50%, rgba(206,58,255,1) 84%);
   background-size: 200%;
@@ -121,14 +122,12 @@ export const ModalClose = styled.button`
   cursor: pointer;
 `;
 
-export const FormContainer = styled(Modal)`
+export const ModalCustom = styled(Modal)`
   background: #FFf;
 
-  margin: 80px auto 80px auto;
+  padding-bottom: 10px;
+  margin: 80px 540px 0 540px;
   position: relative;
-
-  width: 500px;
-  height: 300px;
 
   border-radius: 8px;
   outline: none;
