@@ -56,8 +56,8 @@ export const Submit = styled.button`
 `;
 
 export const OpenModal = styled.button`
-  height: 30px;
-  width: 90px;
+  height: 35px;
+  width: 100px;
 
   margin: 12px 0 0 12px;
 
@@ -65,9 +65,35 @@ export const OpenModal = styled.button`
   border-radius: 24px;
 
   font-weight: 700;
-  font-size: 12px;
+  /* font-size: 12px; */
 
   background-image: linear-gradient(90deg, rgba(15,63,156,1) 0%, rgba(73,177,231,1) 50%, rgba(206,58,255,1) 84%);
+  background-size: 200%;
+  background-position: 0%;
+
+  color: #FFF;
+
+  transition: 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    background-position: 100% 0%;
+  }
+`;
+
+export const Loggout = styled.button`
+  height: 35px;
+  width: 100px;
+
+  margin: 12px 0 0 12px;
+
+  border: none;
+  border-radius: 24px;
+
+  font-weight: 700;
+  /* font-size: 12px; */
+
+  background-image: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
   background-size: 200%;
   background-position: 0%;
 
@@ -126,7 +152,7 @@ export const ModalCustom = styled(Modal)`
   background: #FFf;
 
   padding-bottom: 10px;
-  margin: 80px 540px 0 540px;
+  margin: 80px 35% 0 35%;
   position: relative;
 
   border-radius: 8px;

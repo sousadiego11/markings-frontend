@@ -5,7 +5,7 @@ import { Map } from '../pages';
 export const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/">
+      <Route exact path="/">
         <Map />
       </Route>
     </Switch>
