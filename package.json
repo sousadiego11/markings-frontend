@@ -14,6 +14,7 @@
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "express": "^4.17.1",
+    "mapbox-gl": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-map-gl": "^6.1.17",
@@ -44,6 +45,9 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "json-loader": "^0.5.7",
+    "transform-loader": "^0.2.4",
+    "webworkify-webpack": "1.0.6"
   }
 }
