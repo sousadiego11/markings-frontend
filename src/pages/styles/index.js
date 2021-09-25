@@ -158,4 +158,8 @@ export const ModalCustom = styled(Modal)`
   border-radius: 8px;
   outline: none;
   box-shadow: 5px 6px 15px 0px rgba(60,60,60,0.24);
+
+  @media(max-width: 800px) {
+    margin: 80px 5% 0 5%;
+  }
 `;
