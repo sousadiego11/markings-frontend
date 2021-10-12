@@ -1,6 +1,6 @@
 # Front-end App that consumes external API ( WIP )
 
-This project was built using ReactJS and Mapbox(react-map-gl).
+This project was built using ReactJS and React-map-gl.
 
 ## Installation ✨
 
@@ -21,14 +21,14 @@ yarn start
 ```javascript
 Eslint
 Styled-components
-React-router
 Hooks
-Mapbox
 ```
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+## Project objective
+- Exercise front-end integration with external API's.
+- Authenticate user and saving tokens in local storage.
+- Use auth token stored in local storage.
+- CSS features.
+- Usage of map lib.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
