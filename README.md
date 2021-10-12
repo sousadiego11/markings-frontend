@@ -1,4 +1,4 @@
-# Front-end App that consumes external API ( WIP )
+# Front-end App that consumes external API
 
 This project was built using ReactJS and React-map-gl.
 
