@@ -24,7 +24,7 @@ export const FormItem = styled.div`
     color: #8a909a;
   }
 
-  .material-icons {
+  .material-icons, .material-icons-outlined {
     color: #8a909a;
   }
 `;
