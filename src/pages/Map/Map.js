@@ -5,7 +5,6 @@ import ReactMapGL, {
 } from 'react-map-gl';
 import { FormItem, Submit } from '../styles';
 import { Actions } from '../UserPanel';
-import { authConfig } from '../utils';
 import {
   geolocateControlStyle, navControlStyle, mapStyle, defaultViewport,
 } from './utils';
@@ -42,7 +41,7 @@ export const Map = () => {
       longitude: marker.long,
     };
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/markers`, { marker: values }, authConfig);
+      await axios.post(`${process.env.REACT_APP_API_URL}/markers`, { marker: values }, { headers: { authorization: `Bearer ${window.localStorage.getItem('access_token')}` } });
       setShowMarker(false);
       setPopupDesc(undefined);
     } catch (error) {
