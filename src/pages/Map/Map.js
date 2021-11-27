@@ -42,7 +42,6 @@ export const Map = () => {
       longitude: marker.long,
     };
     try {
-      console.log('🚀 ~ file: Map.js ~ line 46 ~ handleSaveMarker ~ authConfig', authConfig);
       await axios.post(`${process.env.REACT_APP_API_URL}/markers`, { marker: values }, authConfig);
       setShowMarker(false);
       setPopupDesc(undefined);
@@ -71,11 +70,11 @@ export const Map = () => {
         <Marker
           latitude={marker.lat}
           longitude={marker.long}
-          offsetLeft={-20}
-          offsetTop={-10}
+          offsetLeft={-25}
+          offsetTop={-40}
         >
-          <span className="material-icons" style={{ fontSize: viewport.zoom * 3, color: '#e3143a' }}>
-            fmd_bad
+          <span className="material-icons" style={{ fontSize: viewport.zoom * 3, color: '#067cd6' }}>
+            place
           </span>
         </Marker>
         <Popup
@@ -97,7 +96,7 @@ export const Map = () => {
               placeholder="Descrição"
             />
           </FormItem>
-          <Submit style={{ width: '80px' }} onClick={handleSaveMarker}> Save</Submit>
+          <Submit style={{ width: '60px', height: 30, marginLeft: 60 }} onClick={handleSaveMarker}> Save</Submit>
         </Popup>
       </>
       )
