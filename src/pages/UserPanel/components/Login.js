@@ -1,10 +1,12 @@
 /* eslint-disable no-alert */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { FormItem, LoginLink, Submit } from '../../styles';
+import { Context } from '../../utils/Context';
 
-export const Login = ({ setModalType, setModalVisible, setIsLogged }) => {
+export const Login = () => {
   const [userData, setUserData] = useState({ email: null, password: null });
+  const { setModalType, setModalVisible, setIsLogged } = useContext(Context);
 
   const handleLogin = (e) => {
     e.preventDefault();

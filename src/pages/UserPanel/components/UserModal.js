@@ -1,31 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Login, Signup } from '.';
 import {
   FormWrapper, ModalClose, ModalCustom, Welcome,
 } from '../../styles';
+import { Context } from '../../utils/Context';
 
-export const UserModal = ({ props }) => (
-  <ModalCustom isOpen={props.modalVisible}>
-    <form>
-      <FormWrapper>
-        <ModalClose type="button" onClick={() => props.setModalVisible(false)}>
-          <span
-            className="material-icons-outlined"
-          >
-            close
-          </span>
-        </ModalClose>
-        <Welcome>Markings</Welcome>
-        {props.modalType === 1
-          ? <Signup setModalType={props.setModalType} setModalVisible={props.setModalVisible} />
-          : (
-            <Login
-              setModalType={props.setModalType}
-              setModalVisible={props.setModalVisible}
-              setIsLogged={props.setIsLogged}
-            />
-          )}
-      </FormWrapper>
-    </form>
-  </ModalCustom>
-);
+export const UserModal = () => {
+  const { modalVisible, setModalVisible, modalType } = useContext(Context);
+  return (
+    <ModalCustom isOpen={modalVisible}>
+      <form>
+        <FormWrapper>
+          <ModalClose type="button" onClick={() => setModalVisible(false)}>
+            <span
+              className="material-icons-outlined"
+            >
+              close
+            </span>
+          </ModalClose>
+          <Welcome>Markings</Welcome>
+          {modalType === 1
+            ? (
+              <Signup />
+            )
+            : (
+              <Login />
+            )}
+        </FormWrapper>
+      </form>
+    </ModalCustom>
+  );
+};

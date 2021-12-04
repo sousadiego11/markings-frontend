@@ -1,13 +1,16 @@
-import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import React, {
+  useCallback, useContext, useEffect,
+} from 'react';
 import { Loggout, OpenModal } from '../styles/index';
-import { UserModal } from './components/UserModal';
 import { authConfig } from '../utils';
+import { Context } from '../utils/Context';
+import { UserModal } from './components/UserModal';
 
 export const Actions = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalType, setModalType] = useState(1);
-  const [isLogged, setIsLogged] = useState(false);
+  const {
+    setModalVisible, setModalType, setIsLogged, isLogged,
+  } = useContext(Context);
 
   const openModal = useCallback((newModal) => {
     setModalVisible(true);
@@ -43,10 +46,7 @@ export const Actions = () => {
             <OpenModal onClick={() => openModal(2)}>LOGIN</OpenModal>
           </>
         )}
-      <UserModal props={{
-        modalVisible, setModalVisible, modalType, setModalType, setIsLogged,
-      }}
-      />
+      <UserModal />
     </>
   );
 };
