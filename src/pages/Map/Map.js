@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactMapGL, {
-  GeolocateControl, NavigationControl, Marker, Popup,
+  GeolocateControl, NavigationControl,
 } from 'react-map-gl';
-import { FormItem, Submit } from '../styles';
 import { Actions } from '../UserPanel';
+import { MarkerCadastro } from './MarkerCadastro';
 import {
-  geolocateControlStyle, navControlStyle, mapStyle, defaultViewport,
+  defaultViewport, geolocateControlStyle, mapStyle, navControlStyle,
 } from './utils';
 
 export const Map = () => {
@@ -44,8 +44,11 @@ export const Map = () => {
       await axios.post(`${process.env.REACT_APP_API_URL}/markers`, { marker: values }, { headers: { authorization: `Bearer ${window.localStorage.getItem('access_token')}` } });
       setShowMarker(false);
       setPopupDesc(undefined);
+      window.alert('Ponto salvo com sucesso!');
     } catch (error) {
       window.alert('Você não está autenticado!');
+      setShowMarker(false);
+      setPopupDesc(undefined);
     }
   };
 
@@ -65,39 +68,13 @@ export const Map = () => {
       {
         showMarker
       && (
-      <>
-        <Marker
-          latitude={marker.lat}
-          longitude={marker.long}
-          offsetLeft={-25}
-          offsetTop={-40}
-        >
-          <span className="material-icons" style={{ fontSize: viewport.zoom * 3, color: '#067cd6' }}>
-            place
-          </span>
-        </Marker>
-        <Popup
-          latitude={marker.lat}
-          longitude={marker.long}
-          anchor="left"
-          closeButton
-          onClose={() => setShowMarker(false)}
-        >
-          <FormItem>
-            <span className="material-icons-outlined">
-              rate_review
-            </span>
-            <input
-              required
-              onChange={(e) => setPopupDesc(e.target.value)}
-              className="form-input"
-              type="text"
-              placeholder="Descrição"
-            />
-          </FormItem>
-          <Submit style={{ width: '60px', height: 30, marginLeft: 60 }} onClick={handleSaveMarker}> Save</Submit>
-        </Popup>
-      </>
+      <MarkerCadastro
+        marker={marker}
+        viewport={viewport}
+        setPopupDesc={setPopupDesc}
+        setShowMarker={setShowMarker}
+        handleSaveMarker={handleSaveMarker}
+      />
       )
       }
       <Actions />
