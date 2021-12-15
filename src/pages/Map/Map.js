@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import axios from 'axios';
 import React, {
   useCallback, useEffect, useState,
@@ -7,8 +6,8 @@ import ReactMapGL, {
   GeolocateControl, NavigationControl,
 } from 'react-map-gl';
 import { Actions } from '../UserPanel';
-import { ContextProvider } from '../utils/ContextProvider';
 import { MarkerCadastro } from './MarkerCadastro';
+import { RenderMarkers } from './RenderMarkers';
 import {
   defaultViewport, geolocateControlStyle, mapStyle, navControlStyle,
 } from './utils';
@@ -17,9 +16,7 @@ export const Map = () => {
   const [viewport, setViewport] = useState(defaultViewport);
   const [showMarker, setShowMarker] = useState(false);
   const [marker, setMarker] = useState();
-  const [markers, setMarkers] = useState([]);
   const [popupDesc, setPopupDesc] = useState();
-  console.log('🚀 ~ file: Map.js ~ line 22 ~ Map ~ markers', markers);
 
   const getUserLocation = useCallback(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -60,8 +57,6 @@ export const Map = () => {
 
   useEffect(async () => {
     getUserLocation();
-    const markersRes = await axios.get(`${process.env.REACT_APP_API_URL}/markers`);
-    setMarkers(markersRes.data);
   }, []);
 
   return (
@@ -85,9 +80,8 @@ export const Map = () => {
       />
       )
       }
-      <ContextProvider>
-        <Actions />
-      </ContextProvider>
+      <RenderMarkers viewport={viewport} />
+      <Actions />
       <NavigationControl style={navControlStyle} />
       <GeolocateControl
         style={geolocateControlStyle}
