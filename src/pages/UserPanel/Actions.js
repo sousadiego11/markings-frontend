@@ -9,7 +9,7 @@ import { UserModal } from './components/UserModal';
 
 export const Actions = () => {
   const {
-    setModalVisible, setModalType, setIsLogged, isLogged,
+    setModalVisible, setUserId, setModalType, setIsLogged, isLogged,
   } = useContext(Context);
 
   const openModal = useCallback((newModal) => {
@@ -20,12 +20,14 @@ export const Actions = () => {
   const handleLogout = () => {
     window.localStorage.removeItem('access_token');
     setIsLogged(false);
+    setUserId(undefined);
   };
 
   const checkLoggedUser = async () => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/users/auth`, null, authConfig);
+      const { id } = await axios.post(`${process.env.REACT_APP_API_URL}/users/auth`, null, authConfig);
       setIsLogged(true);
+      setUserId(id);
     } catch (error) {
       setIsLogged(false);
       setModalVisible(true);

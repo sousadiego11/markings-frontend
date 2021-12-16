@@ -6,18 +6,21 @@ import { Context } from '../../utils/Context';
 
 export const Login = () => {
   const [userData, setUserData] = useState({ email: null, password: null });
-  const { setModalType, setModalVisible, setIsLogged } = useContext(Context);
+  const {
+    setModalType, setModalVisible, setIsLogged, setUserId,
+  } = useContext(Context);
 
   const handleLogin = (e) => {
     e.preventDefault();
     axios.post(`${process.env.REACT_APP_API_URL}/users/login`, userData)
       .then((res) => {
-        const { token } = res.data;
+        const { token, id } = res.data;
         window.alert('User logged succesfully!');
         window.localStorage.setItem('access_token', token);
 
         setModalVisible(false);
         setIsLogged(true);
+        setUserId(id);
       }).catch((err) => {
         window.alert(err.response.data.error);
       });

@@ -1,48 +1,57 @@
 import axios from 'axios';
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useContext, useEffect, useMemo, useState,
 } from 'react';
 import { Marker, Popup } from 'react-map-gl';
 import styled from 'styled-components';
+import { Context } from '../utils/Context';
 
 const PopupParagraph = styled.p`
 color: #353535;
 wordBreak: 'break-all';
 `;
 
-export const RenderMarkers = ({ viewport }) => {
+export const RenderMarkers = () => {
   const [markers, setMarkers] = useState([]);
   const [popup, setPopup] = useState();
+  const { userId } = useContext(Context);
 
   const handleClickedMarker = useCallback((clickedMarker = {}) => {
     setPopup(clickedMarker);
   }, []);
 
-  const MarkersMemo = useMemo(() => markers.map((m) => (
-    <Marker
-      latitude={+m.latitude}
-      longitude={+m.longitude}
-      offsetLeft={-23}
-      offsetTop={-36}
-      key={m.id_marker}
-      onClick={() => handleClickedMarker(m)}
-    >
-      <span
-        className="material-icons"
-        style={{ fontSize: viewport.zoom * 2.5, color: '#067cd6', cursor: 'pointer' }}
-      >
-        place
-      </span>
-    </Marker>
-  )), [markers]);
-
-  useEffect(async () => {
+  const handleFetchMarkers = useCallback(async () => {
     try {
       const markersRes = await axios.get(`${process.env.REACT_APP_API_URL}/markers`);
       setMarkers(markersRes.data);
     } catch (error) {
       throw new Error(error);
     }
+  }, []);
+
+  const MarkersMemo = useMemo(() => markers.map((m) => {
+    const color = userId && +userId === +m.user_id ? '#e8bb41' : '#067cd6';
+    return (
+      <Marker
+        latitude={+m.latitude}
+        longitude={+m.longitude}
+        offsetLeft={-23}
+        offsetTop={-36}
+        key={m.id_marker}
+        onClick={() => handleClickedMarker(m)}
+      >
+        <span
+          className="material-icons"
+          style={{ fontSize: 35, color, cursor: 'pointer' }}
+        >
+          place
+        </span>
+      </Marker>
+    );
+  }), [markers, userId]);
+
+  useEffect(async () => {
+    handleFetchMarkers();
   }, []);
 
   return (
