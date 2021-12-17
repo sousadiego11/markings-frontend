@@ -5,6 +5,7 @@ import React, {
 import ReactMapGL, {
   GeolocateControl, NavigationControl,
 } from 'react-map-gl';
+import observable from '../../utils';
 import { Actions } from '../UserPanel';
 import { MarkerCadastro } from './MarkerCadastro';
 import { RenderMarkers } from './RenderMarkers';
@@ -47,6 +48,7 @@ export const Map = () => {
       await axios.post(`${process.env.REACT_APP_API_URL}/markers`, { marker: values }, { headers: { authorization: `Bearer ${window.localStorage.getItem('access_token')}` } });
       setShowMarker(false);
       setPopupDesc(undefined);
+      observable.notify(true);
       window.alert('Ponto salvo com sucesso!');
     } catch (error) {
       window.alert('Você não está autenticado!');
@@ -73,7 +75,6 @@ export const Map = () => {
       && (
       <MarkerCadastro
         marker={marker}
-        viewport={viewport}
         setPopupDesc={setPopupDesc}
         setShowMarker={setShowMarker}
         handleSaveMarker={handleSaveMarker}

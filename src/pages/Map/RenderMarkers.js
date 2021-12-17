@@ -4,6 +4,7 @@ import React, {
 } from 'react';
 import { Marker, Popup } from 'react-map-gl';
 import styled from 'styled-components';
+import observable from '../../utils';
 import { Context } from '../utils/Context';
 
 const PopupParagraph = styled.p`
@@ -30,7 +31,7 @@ export const RenderMarkers = () => {
   }, []);
 
   const MarkersMemo = useMemo(() => markers.map((m) => {
-    const color = userId && +userId === +m.user_id ? '#e8bb41' : '#067cd6';
+    const color = userId && +userId === +m.user_id ? '#1eba74' : '#067cd6';
     return (
       <Marker
         latitude={+m.latitude}
@@ -52,6 +53,12 @@ export const RenderMarkers = () => {
 
   useEffect(async () => {
     handleFetchMarkers();
+  }, []);
+
+  useEffect(() => {
+    observable.attach(handleFetchMarkers);
+
+    return () => observable.detach(handleFetchMarkers);
   }, []);
 
   return (

@@ -15,7 +15,7 @@ export const Login = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/users/login`, userData)
       .then((res) => {
         const { token, id } = res.data;
-        window.alert('User logged succesfully!');
+        window.alert('Autenticado com sucesso!');
         window.localStorage.setItem('access_token', token);
 
         setModalVisible(false);

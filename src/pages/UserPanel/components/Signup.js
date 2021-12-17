@@ -12,7 +12,7 @@ export const Signup = () => {
     e.preventDefault();
     axios.post(`${process.env.REACT_APP_API_URL}/users`, userData)
       .then(() => {
-        window.alert('User created succesfully!');
+        window.alert('Usuário criado com sucesso!');
         setModalType(2);
       }).catch((err) => {
         window.alert(err.response.data.error);
