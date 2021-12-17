@@ -4,13 +4,15 @@ import React, {
 } from 'react';
 import { Marker, Popup } from 'react-map-gl';
 import styled from 'styled-components';
-import observable from '../../utils';
+import { Observable } from '../../utils';
 import { Context } from '../utils/Context';
 
 const PopupParagraph = styled.p`
 color: #353535;
 wordBreak: 'break-all';
 `;
+
+export const shouldFetchMarkers = new Observable();
 
 export const RenderMarkers = () => {
   const [markers, setMarkers] = useState([]);
@@ -56,9 +58,9 @@ export const RenderMarkers = () => {
   }, []);
 
   useEffect(() => {
-    observable.attach(handleFetchMarkers);
+    shouldFetchMarkers.attach(handleFetchMarkers);
 
-    return () => observable.detach(handleFetchMarkers);
+    return () => shouldFetchMarkers.detach(handleFetchMarkers);
   }, []);
 
   return (

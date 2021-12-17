@@ -20,7 +20,7 @@ export const MarkerCadastro = ({
         offsetTop={-36}
       >
         <span className="material-icons" style={{ fontSize: 35, color }}>
-          place
+          edit_location
         </span>
       </Marker>
       <Popup

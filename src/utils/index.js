@@ -1,4 +1,4 @@
-class Observable {
+export class Observable {
   observers = []
 
   attach(observer) {
