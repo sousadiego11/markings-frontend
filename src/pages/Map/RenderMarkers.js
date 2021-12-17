@@ -38,8 +38,8 @@ export const RenderMarkers = () => {
       <Marker
         latitude={+m.latitude}
         longitude={+m.longitude}
-        offsetLeft={-23}
-        offsetTop={-36}
+        offsetTop={-30}
+        offsetLeft={-34 / 2}
         key={m.id_marker}
         onClick={() => handleClickedMarker(m)}
       >

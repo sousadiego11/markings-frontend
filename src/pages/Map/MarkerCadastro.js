@@ -16,8 +16,8 @@ export const MarkerCadastro = ({
       <Marker
         latitude={marker.lat}
         longitude={marker.long}
-        offsetLeft={-23}
-        offsetTop={-36}
+        offsetTop={-30}
+        offsetLeft={-34 / 2}
       >
         <span className="material-icons" style={{ fontSize: 35, color }}>
           edit_location
