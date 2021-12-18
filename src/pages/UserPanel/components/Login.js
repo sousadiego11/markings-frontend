@@ -1,11 +1,14 @@
 /* eslint-disable no-alert */
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import { FormItem, LoginLink, Submit } from '../../styles';
+import {
+  ErrorMessage, FormItem, LoginLink, Submit,
+} from '../../styles';
 import { Context } from '../../utils/Context';
 
 export const Login = () => {
   const [userData, setUserData] = useState({ email: null, password: null });
+  const [error, setError] = useState();
   const {
     setModalType, setModalVisible, setIsLogged, setUserId,
   } = useContext(Context);
@@ -21,8 +24,9 @@ export const Login = () => {
         setModalVisible(false);
         setIsLogged(true);
         setUserId(id);
+        setError(undefined);
       }).catch((err) => {
-        window.alert(err.response.data.error);
+        setError(err.response.data.error);
       });
   };
 
@@ -60,6 +64,7 @@ export const Login = () => {
         />
       </FormItem>
       <Submit name="action" onClick={handleLogin} value={2}>LOGIN</Submit>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <LoginLink onClick={() => setModalType(1)}>Não é cadastrado?</LoginLink>
     </>
   );

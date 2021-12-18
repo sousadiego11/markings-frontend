@@ -1,11 +1,14 @@
 /* eslint-disable no-alert */
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import { FormItem, LoginLink, Submit } from '../../styles';
+import {
+  ErrorMessage, FormItem, LoginLink, Submit,
+} from '../../styles';
 import { Context } from '../../utils/Context';
 
 export const Signup = () => {
   const [userData, setUserData] = useState({ name: null, email: null, password: null });
+  const [error, setError] = useState();
   const { setModalType } = useContext(Context);
 
   const handleSignup = (e) => {
@@ -14,8 +17,9 @@ export const Signup = () => {
       .then(() => {
         window.alert('Usuário criado com sucesso!');
         setModalType(2);
+        setError(undefined);
       }).catch((err) => {
-        window.alert(err.response.data.error);
+        setError(err.response.data.error);
       });
   };
 
@@ -66,6 +70,7 @@ export const Signup = () => {
         />
       </FormItem>
       <Submit name="action" value={1} onClick={handleSignup}>REGISTRAR-SE</Submit>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <LoginLink onClick={() => setModalType(2)}>Já possui uma conta?</LoginLink>
     </>
   );

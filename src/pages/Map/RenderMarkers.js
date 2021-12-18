@@ -33,7 +33,7 @@ export const RenderMarkers = () => {
   }, []);
 
   const MarkersMemo = useMemo(() => markers.map((m) => {
-    const color = userId && +userId === +m.user_id ? '#1eba74' : '#067cd6';
+    const color = userId && +userId === +m.user_id ? 'tomato' : '#067cd6';
     return (
       <Marker
         latitude={+m.latitude}

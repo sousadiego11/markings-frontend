@@ -10,7 +10,7 @@ export const MarkerCadastro = ({
   handleSaveMarker = () => {},
 }) => {
   const { userId } = useContext(Context);
-  const color = userId ? '#1eba74' : '#067cd6';
+  const color = userId ? 'tomato' : '#067cd6';
   return (
     <>
       <Marker

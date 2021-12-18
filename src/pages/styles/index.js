@@ -115,7 +115,17 @@ export const LoginLink = styled.a`
 
   font-size: 14px;
 
-  color: #4f5259;
+  color:  rgba(73,177,231,1);
+`;
+
+export const ErrorMessage = styled.p`
+  align-self: center;
+  margin-top: 6px;
+  margin-bottom: 0;
+
+  font-size: 14px;
+
+  color:  rgba(253,29,29,1);
 `;
 
 export const Welcome = styled.h1`
