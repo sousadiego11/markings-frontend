@@ -50,7 +50,7 @@ export const Map = () => {
       shouldFetchMarkers.notify(true);
       window.alert('Ponto salvo com sucesso!');
     } catch (error) {
-      window.alert('Você não está autenticado!');
+      window.alert(error.response.data.error);
       setShowMarker(false);
       setPopupDesc(undefined);
     }
