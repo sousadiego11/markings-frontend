@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  api:
+    image: api
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: host.docker.internal
+      DB_PORT: 5432
+      DB_NAME: typescript_api
+      ACCESS_TOKEN_SECRET: 1c6c3296f699e051220674d329e040dee0abae986f62d62eb89f55dfa95bff1ac9b52731177e664e25bff9b6ce0eba6ec7a9b6cf7d03e94487dc03179dc31c7e
+    ports:
+      - "5000:5000"
+  front:
+    image: front
+    environment:
+      REACT_APP_MAPBOX_TOKEN: pk.eyJ1Ijoic291c2FkaWVnbzExIiwiYSI6ImNrdHEwbDRrdTBycTEycXBtbXZ5eXEzMm4ifQ.U58H7S1um_WcRC2rBoEuNw
+      REACT_APP_API_URL: http://localhost:5000
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
