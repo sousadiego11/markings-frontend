@@ -89,6 +89,20 @@ export const Map = () => {
         trackUserLocation
         auto
       />
+      <div style={{
+        position: 'absolute',
+        right: 10,
+        top: 150,
+      }}
+      >
+        <div className="mapboxgl-ctrl mapboxgl-ctrl-group">
+          <button
+            type="button"
+          >
+            <span className="mapboxgl-ctrl-icon" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
     </ReactMapGL>
   );
 };
