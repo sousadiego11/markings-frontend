@@ -22,6 +22,9 @@ yarn start
 Eslint
 Styled-components
 Hooks
+React Map-GL
+Axios
+Observable pattern
 ```
 ## Project objective
 - Exercise front-end integration with external API's.
