@@ -10,6 +10,9 @@ Use the package yarn to install the dependecies.
 yarn install
 ```
 
+## Depends on 🚩
+- https://github.com/sousadiego11/markings-api
+
 ## Usage 🔥
 
 ```javascript
